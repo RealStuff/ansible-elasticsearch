@@ -1,0 +1,16 @@
+---
+
+# TODO: Debian support
+# - name: Include specific Elasticsearch uninstall
+#   include: elasticsearch-uninstall-Debian.yml
+#   when: ansible_os_family == 'Debian'
+
+- name: Include specific Elasticsearch uninstall
+  include: elasticsearch-uninstall-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+# Deletes related data
+- name: Cleanup Elasticsearch related data
+  include: elasticsearch-uninstall-data.yml
+  when: es_uninstall_data
+

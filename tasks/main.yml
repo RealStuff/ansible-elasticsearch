@@ -109,3 +109,10 @@
   when: es_templates | bool
   tags:
       - templates
+
+# Uninstall Elasticsearch. Maybe this should be moved up to allow re-install, but this seems to be an edge case.
+# - name: include elasticsearch-uninstall.yml
+#   include: elasticsearch-uninstall.yml
+#   tags:
+#       - never
+#       - uninstall

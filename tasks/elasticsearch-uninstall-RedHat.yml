@@ -1,0 +1,14 @@
+---
+
+# Uninstall Elasticsearch RedHat
+
+- name: Shutdown Elasticsearch
+  service:
+    name: elasticsearch
+    state: stopped
+  ignore_errors: true
+
+- name: Uninstall Elasticsearch package
+  yum:
+    name: elasticsearch
+    state: absent

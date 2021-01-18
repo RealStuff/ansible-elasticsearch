@@ -1,0 +1,34 @@
+---
+
+# Uninstall related Elasticsearch data
+
+- name: Remove /usr/share/elasticsearch
+  file:
+    path: /usr/share/elasticsearch
+    state: absent
+
+- name: Remove /var/lib/elasticsearch
+  file:
+    path: /usr/share/elasticsearch
+    state: absent
+
+- name: Remove {{es_conf_dir}}
+  file:
+    path: "{{es_conf_dir}}"
+    state: absent
+
+- name: Remove "{{es_log_dir}}"
+  file:
+    path: "{{es_log_dir}}"
+    state: absent
+
+- name: Remove {{es_heap_dump_path}}
+  file:
+    path: "{{es_heap_dump_path}}"
+    state: absent
+
+- name: Remove data dirs
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items: "{{ es_data_dirs }}"
