@@ -468,6 +468,19 @@ To define proxy globally, set the following variables:
 * ```es_proxy_host``` - global proxy host
 * ```es_proxy_port``` - global proxy port
 
+### Uninstall
+Elasticsearch can be uninstalled with of the following methods:
+
+* Applying the uninstall-tag ```--tags: uninstall```
+* Importing/Including the role with tasks_from:   
+  ```
+  include_tasks:
+    name: ansible-elasticsearch
+    tasks_from: elasticsearch-uninstall.yml
+  ```
+**Note:** By default, the Elasticsearch related data like path_data and path_logs, etc. is not deleted. To completely delete Elasticsearch including data, set the following variable ```es_uninstall_data: true```
+
+
 ## Notes
 
 * The role assumes the user/group exists on the server.  The elasticsearch packages create the default elasticsearch user.  If this needs to be changed, ensure the user exists.
